@@ -1,1 +1,1 @@
---markup markdown --title 'OpenNamespace Documentation' --protected - ChangeLog.md LICENSE.txt
+--markup markdown --title 'OpenNamespace Documentation' --protected --files ChangeLog.md,LICENSE.txt
