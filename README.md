@@ -31,6 +31,10 @@ Explicit and implicit loading of constants:
     Project::Plguins.require_const :foo_bar
     # => Project::Plugins::FooBar
 
+    # explicitly loading constants via sub-paths
+    Project::Plguins.require_const 'templates/erb'
+    # => Project::Plugins::Templates::Erb
+
     # implicit loading of constants via const_missing
     Project::Plugins::Other
     # => Project::Plugins::Other
