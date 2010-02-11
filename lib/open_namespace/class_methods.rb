@@ -82,7 +82,7 @@ module OpenNamespace
       const_name = (self.namespace + '::' + name.to_const_string)
 
       begin
-        return Object.get_full_const(const_name))
+        return Object.get_full_const(const_name)
       rescue NameError
         return nil
       end
