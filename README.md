@@ -57,7 +57,7 @@ Loading constants from alternate namespaces / directories:
 
 ## Install
 
-    $ sudo gem install open_namespace
+    $ sudo gem install open-namespace
 
 ## License
 
