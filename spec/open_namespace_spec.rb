@@ -35,6 +35,22 @@ describe OpenNamespace do
       const.name.should == 'Classes::SimpleNamespace::ConstantOne'
     end
 
+    it "should load constants via sub-paths" do
+      @module.require_const File.join('sub','constant_four')
+
+      @module.should be_const_defined('Sub')
+      @sub = @module.const_get('Sub')
+
+      @sub.should be_const_defined('ConstantFour')
+    end
+
+    it "should find constants loaded via sub-paths" do
+      const = @module.require_const(File.join('sub','constant_four'))
+
+      const.class.should == Class
+      const.name.should == 'Classes::SimpleNamespace::Sub::ConstantFour'
+    end
+
     it "should return nil on LoadError exceptions" do
       const = @module.require_const(:constant_not_found)
 
@@ -78,9 +94,9 @@ describe OpenNamespace do
       @module.require_const :constant_one
 
       @module.should be_const_defined('Custom')
-      @sub_module = @module.const_get('Custom')
+      @custom = @module.const_get('Custom')
 
-      @sub_module.should be_const_defined('ConstantOne')
+      @custom.should be_const_defined('ConstantOne')
     end
 
     it "should find loaded constants in the namespace" do
@@ -88,6 +104,25 @@ describe OpenNamespace do
 
       const.class.should == Class
       const.name.should == 'Classes::CustomNamespace::Custom::ConstantOne'
+    end
+
+    it "should load constants via sub-paths" do
+      @module.require_const File.join('sub','constant_four')
+
+      @module.should be_const_defined('Custom')
+      @custom = @module.const_get('Custom')
+
+      @custom.should be_const_defined('Sub')
+      @sub = @custom.const_get('Sub')
+
+      @sub.should be_const_defined('ConstantFour')
+    end
+
+    it "should find constants loaded via sub-paths" do
+      const = @module.require_const(File.join('sub','constant_four'))
+
+      const.class.should == Class
+      const.name.should == 'Classes::CustomNamespace::Custom::Sub::ConstantFour'
     end
 
     it "should return nil on LoadError exceptions" do
