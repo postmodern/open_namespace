@@ -6,9 +6,9 @@
 
 ## Description
 
-OpenNamespace allows namespaces to require and find class and modules from
-other gems. Using OpenNamespace you can make a `Plugins` namespace be able
-to load plugin modules/classes from other gems.
+OpenNamespace allows namespaces to require and find classes and modules from
+RubyGems. Using OpenNamespace you can make a `Plugins` module able to
+load plugin modules/classes from other gems.
 
 ## Features
 

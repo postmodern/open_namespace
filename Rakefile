@@ -8,7 +8,7 @@ begin
     gem.name = 'open-namespace'
     gem.version = OpenNamespace::VERSION
     gem.summary = %Q{Allows namespaces to load constants on-demand}
-    gem.description = %Q{OpenNamespace allows namespaces to require and find class and modules from other gems.}
+    gem.description = %Q{OpenNamespace allows namespaces to require and find classes and modules from other RubyGems.}
     gem.email = 'postmodern.mod3@gmail.com'
     gem.homepage = 'http://github.com/postmodern/open-namespace'
     gem.authors = ['Postmodern']
