@@ -53,7 +53,7 @@ Loading constants from alternate namespaces / directories:
 
 ## Requirements
 
-* [extlib](http://github.com/datamapper/extlib) >= 0.9.14
+* [extlib](http://gemcutter.org/gems/extlib) >= 0.9.14
 
 ## Install
 
