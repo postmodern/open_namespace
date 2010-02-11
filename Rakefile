@@ -15,7 +15,6 @@ begin
     gem.add_dependency 'extlib', '>= 0.9.14'
     gem.add_development_dependency 'rspec', '>= 1.2.9'
     gem.add_development_dependency 'yard', '>= 0.4.0'
-
     gem.has_rdoc = 'yard'
   end
 rescue LoadError
