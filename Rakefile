@@ -17,11 +17,6 @@ begin
     gem.add_development_dependency 'yard', '>= 0.4.0'
 
     gem.has_rdoc = 'yard'
-    gem.rdoc_options += [
-      '--markup', 'markdown',
-      '--title', "OpenNamespace #{gem.version} Documentation",
-      '--protected'
-    ]
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
@@ -40,14 +35,7 @@ task :default => :spec
 begin
   require 'yard'
 
-  YARD::Rake::YardocTask.new do |t|
-    t.options = [
-      '--markup', 'markdown',
-      '--title', "OpenNamespace Documentation",
-      '--protected',
-      '-', 'ChangeLog.md', 'LICENSE.txt'
-    ]
-  end
+  YARD::Rake::YardocTask.new
 rescue LoadError
   task :yard do
     abort "YARD is not available. In order to run yard, you must: gem install yard"
