@@ -44,11 +44,11 @@ Loading constants from alternate namespaces / directories:
     module Project
       module UI
         module CommandLine
-	  include OpenNamespace
+          include OpenNamespace
 
           self.namespace = 'Projects::UI::CommandLine::Commands'
-	  self.namespace_root = File.join('project','ui','command_line','commands')
-	end
+          self.namespace_root = File.join('project','ui','command_line','commands')
+        end
       end
     end
 
