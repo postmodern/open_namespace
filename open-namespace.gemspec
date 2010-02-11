@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "lib/open_namespace/class_methods.rb",
     "lib/open_namespace/open_namespace.rb",
     "lib/open_namespace/version.rb",
+    "open-namespace.gemspec",
     "spec/classes/custom/bad_constant.rb",
     "spec/classes/custom/constant_one.rb",
     "spec/classes/custom/constant_two.rb",
