@@ -41,11 +41,11 @@ begin
   require 'yard'
 
   YARD::Rake::YardocTask.new do |t|
-    t.files = ['ChangeLog.md']
     t.options = [
       '--markup', 'markdown',
       '--title', "OpenNamespace Documentation",
-      '--protected'
+      '--protected',
+      '-', 'ChangeLog.md', 'LICENSE.txt'
     ]
   end
 rescue LoadError
