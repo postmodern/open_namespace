@@ -70,9 +70,10 @@ module OpenNamespace
     #
     def require_const(name)
       name = name.to_s
+      path = File.join(namespace_root,File.expand_path(File.join('',name)))
 
       begin
-        require File.join(namespace_root,name)
+        require path
       rescue Gem::LoadError
         raise(e)
       rescue ::LoadError
