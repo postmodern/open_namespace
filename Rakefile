@@ -12,7 +12,7 @@ begin
     gem.email = 'postmodern.mod3@gmail.com'
     gem.homepage = 'http://github.com/postmodern/open-namespace'
     gem.authors = ['Postmodern']
-    gem.add_dependency 'extlib', '>=0.9.14'
+    gem.add_dependency 'extlib', '>= 0.9.14'
     gem.add_development_dependency 'rspec', '>= 1.2.9'
     gem.add_development_dependency 'yard', '>= 0.4.0'
 
