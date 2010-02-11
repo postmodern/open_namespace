@@ -93,6 +93,9 @@ module OpenNamespace
     #
     # Provides transparent access to require_const.
     #
+    # @param [Symbol] name
+    #   The name of the constant to load.
+    #
     # @return [Class, Module]
     #   The loaded constant.
     #
@@ -102,7 +105,7 @@ module OpenNamespace
     # @see require_const.
     #
     def const_missing(name)
-      require_const(name.to_const_path) || super(name)
+      require_const(name.to_s.to_const_path) || super(name)
     end
   end
 end
