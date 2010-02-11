@@ -57,16 +57,20 @@ module OpenNamespace
     # Requires the file and finds the newly defined constant.
     #
     # @param [String, Symbol] name
-    #   The name of the file.
+    #   The name or sub-path of the file.
     #
     # @return [Class, Module, nil]
     #   The constant loaded from the file. If +nil+ is returned, then either
     #   the file could not be loaded or the required constant could not be
     #   found.
     #
-    # @example
+    # @example Loading a constant.
     #   require_const :helper
     #   # => Fully::Qualiffied::Namespace::Helper
+    #
+    # @example Loading a constant from a sub-path.
+    #   require_const 'network/helper'
+    #   # => Fully::Qualified::Namespace::Network::Helper
     #
     def require_const(name)
       name = name.to_s
