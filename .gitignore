@@ -1,0 +1,8 @@
+pkg
+doc
+tmp
+open-namespace.gemspec
+.DS_Store
+.yardoc
+*.swp
+*~
