@@ -35,13 +35,6 @@ describe OpenNamespace do
       const.name.should == 'Classes::SimpleNamespace::ConstantOne'
     end
 
-    it "should load constants transparently via const_missing" do
-      const = @module::ConstantTwo
-
-      const.class.should == Class
-      const.name.should == 'Classes::SimpleNamespace::ConstantTwo'
-    end
-
     it "should return nil on LoadError exceptions" do
       const = @module.require_const(:constant_not_found)
 
@@ -52,6 +45,19 @@ describe OpenNamespace do
       const = @module.require_const(:bad_constant)
 
       const.should be_nil
+    end
+
+    it "should load constants transparently via const_missing" do
+      const = @module::ConstantTwo
+
+      const.class.should == Class
+      const.name.should == 'Classes::SimpleNamespace::ConstantTwo'
+    end
+
+    it "should raise a NameError exception const_missing fails" do
+      lambda {
+        @module::BadConstant
+      }.should raise_error(NameError)
     end
   end
 
@@ -84,13 +90,6 @@ describe OpenNamespace do
       const.name.should == 'Classes::CustomNamespace::Custom::ConstantOne'
     end
 
-    it "should load constants transparently via const_missing" do
-      const = @module::ConstantTwo
-
-      const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::Custom::ConstantTwo'
-    end
-
     it "should return nil on LoadError exceptions" do
       const = @module.require_const(:constant_not_found)
 
@@ -101,6 +100,19 @@ describe OpenNamespace do
       const = @module.require_const(:bad_constant)
 
       const.should be_nil
+    end
+
+    it "should load constants transparently via const_missing" do
+      const = @module::ConstantTwo
+
+      const.class.should == Class
+      const.name.should == 'Classes::CustomNamespace::Custom::ConstantTwo'
+    end
+
+    it "should raise a NameError exception const_missing fails" do
+      lambda {
+        @module::BadConstant
+      }.should raise_error(NameError)
     end
   end
 end
