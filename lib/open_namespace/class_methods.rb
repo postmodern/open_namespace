@@ -58,8 +58,8 @@ module OpenNamespace
     #
     # Finds the RubyGems that contain files within the {#namespace_root}.
     #
-    # @return [Array<Gem::Specification>]
-    #   The RubyGem specs.
+    # @return [Hash{String => Gem::Specification}]
+    #   The names and RubyGem specifications.
     #
     # @since 0.1.1
     #
