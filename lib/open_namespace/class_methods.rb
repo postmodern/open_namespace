@@ -107,7 +107,7 @@ module OpenNamespace
       unless defined?(@namespace_files)
         @namespace_files = Set[]
 
-        pattern = File.join('lib',self.namespace_root,'*.rb')
+        pattern = File.join(self.namespace_root,'*.rb')
         extract = Regexp.new(File.join('lib',self.namespace_root,'(.+)\.rb$'))
 
         Gem.find_files(pattern).each do |path|
