@@ -56,6 +56,67 @@ module OpenNamespace
     end
 
     #
+    # Finds the RubyGems that contain files within the {#namespace_root}.
+    #
+    # @return [Array<Gem::Specification>]
+    #   The RubyGem specs.
+    #
+    # @since 0.1.1
+    #
+    def namespace_gems
+      unless defined?(@namespace_gems)
+        namespace_dir = File.join('lib',self.namespace_root,'')
+
+        loaded_gems = Gem.loaded_specs.values.select do |gem|
+          gem.files.any? do |path|
+            path.index(namespace_dir) == 0
+          end
+        end
+
+        @namespace_gems = {}
+        
+        loaded_gems.each do |loaded_gem|
+          @namespace_gems[loaded_gem.name] = loaded_gem
+
+          loaded_gem.dependent_gems.each do |gems|
+            gem = gems.first
+
+            @namespace_gems[gem.name] = gem
+          end
+        end
+      end
+
+      return @namespace_gems
+    end
+
+    #
+    # Provides the list of file-names that can be loaded by the namespace.
+    #
+    # @return [Set]
+    #   The unique list of file-names under the namespace.
+    #
+    # @since 0.1.1
+    #
+    def namespace_files
+      unless defined?(@namespace_files)
+        @namespace_files = Set[]
+
+        namespace_dir = File.join('lib',self.namespace_root,'')
+        extract = Regexp.new(File.join('lib',self.namespace_root,'(.+)\.rb$'))
+
+        namespace_gems.each_value do |gem|
+          gem.files.each do |path|
+            if path.index(namespace_dir) == 0
+              @namespace_files << path.scan(extract).first[0]
+            end
+          end
+        end
+      end
+
+      return @namespace_files
+    end
+
+    #
     # Requires the file and finds the newly defined constant.
     #
     # @param [String, Symbol] name
@@ -93,29 +154,6 @@ module OpenNamespace
       rescue NameError
         return nil
       end
-    end
-
-    #
-    # Provides the list of file-names that can be loaded by the namespace.
-    #
-    # @return [Set]
-    #   The unique list of file-names under the namespace.
-    #
-    # @since 0.1.1
-    #
-    def files
-      unless defined?(@namespace_files)
-        @namespace_files = Set[]
-
-        pattern = File.join(self.namespace_root,'*.rb')
-        extract = Regexp.new(File.join('lib',self.namespace_root,'(.+)\.rb$'))
-
-        Gem.find_files(pattern).each do |path|
-          @namespace_files << path.scan(extract).first[0]
-        end
-      end
-
-      return @namespace_files
     end
 
     protected
