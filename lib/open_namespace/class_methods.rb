@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'extlib'
+require 'set'
 
 module OpenNamespace
   module ClassMethods
@@ -92,6 +93,29 @@ module OpenNamespace
       rescue NameError
         return nil
       end
+    end
+
+    #
+    # Provides the list of file-names that can be loaded by the namespace.
+    #
+    # @return [Set]
+    #   The unique list of file-names under the namespace.
+    #
+    # @since 0.1.1
+    #
+    def files
+      unless defined?(@namespace_files)
+        @namespace_files = Set[]
+
+        pattern = File.join('lib',self.namespace_root,'*.rb')
+        extract = Regexp.new(File.join('lib',self.namespace_root,'(.+)\.rb$'))
+
+        Gem.find_files(pattern).each do |path|
+          @namespace_files << path.scan(extract).first[0]
+        end
+      end
+
+      return @namespace_files
     end
 
     protected
