@@ -11,11 +11,11 @@ describe OpenNamespace do
   end
 
   describe "default namespace" do
-    it_should_behave_like 'Namespace Files'
-
     before(:all) do
       @module = Classes::SimpleNamespace
     end
+
+    it_should_behave_like 'Namespace Files'
 
     it "should have the same namespace as the module name" do
       @module.namespace.should == 'Classes::SimpleNamespace'
@@ -81,11 +81,11 @@ describe OpenNamespace do
   end
 
   describe "custom namespace" do
-    it_should_behave_like 'Namespace Files'
-
     before(:all) do
       @module = Classes::CustomNamespace
     end
+
+    it_should_behave_like 'Namespace Files'
 
     it "should have the same namespace as the module name" do
       @module.namespace.should == 'Classes::CustomNamespace::Custom'
