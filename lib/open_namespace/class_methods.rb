@@ -107,7 +107,9 @@ module OpenNamespace
         namespace_gems.each_value do |gem|
           gem.files.each do |path|
             if path.index(namespace_dir) == 0
-              @namespace_files << path.scan(extract).first[0]
+              if (match = path.match(extract))
+                @namespace_files << match[1]
+              end
             end
           end
         end
