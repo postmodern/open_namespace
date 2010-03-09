@@ -1,6 +1,7 @@
 require 'open_namespace/version'
 
 require 'spec_helper'
+require 'namespace_gem_examples'
 require 'classes/simple_namespace'
 require 'classes/custom_namespace'
 
@@ -10,6 +11,8 @@ describe OpenNamespace do
   end
 
   describe "default namespace" do
+    it_should_behave_like 'Namespace Gem'
+
     before(:all) do
       @module = Classes::SimpleNamespace
     end
@@ -78,6 +81,8 @@ describe OpenNamespace do
   end
 
   describe "custom namespace" do
+    it_should_behave_like 'Namespace Gem'
+
     before(:all) do
       @module = Classes::CustomNamespace
     end

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-03-07}
+  s.date = %q{2010-03-08}
   s.description = %q{OpenNamespace allows namespaces to require and find classes and modules from other RubyGems.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
     "spec/classes/simple_namespace/constant_one.rb",
     "spec/classes/simple_namespace/constant_two.rb",
     "spec/classes/simple_namespace/sub/constant_four.rb",
+    "spec/namespace_gem_examples.rb",
     "spec/open_namespace_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -61,7 +62,8 @@ Gem::Specification.new do |s|
     "spec/classes/custom/bad_constant.rb",
     "spec/classes/custom/sub/constant_four.rb",
     "spec/spec_helper.rb",
-    "spec/open_namespace_spec.rb"
+    "spec/open_namespace_spec.rb",
+    "spec/namespace_gem_examples.rb"
   ]
 
   if s.respond_to? :specification_version then
