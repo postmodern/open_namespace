@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-shared_examples_for 'Namespace Gem' do
+shared_examples_for 'Namespace Files' do
   before(:all) do
     @simple_gem = mock(
       'simple_namespace gem',

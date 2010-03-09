@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
     "spec/classes/simple_namespace/constant_one.rb",
     "spec/classes/simple_namespace/constant_two.rb",
     "spec/classes/simple_namespace/sub/constant_four.rb",
-    "spec/namespace_gem_examples.rb",
+    "spec/namespace_files_examples.rb",
     "spec/open_namespace_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -63,7 +63,7 @@ Gem::Specification.new do |s|
     "spec/classes/custom/sub/constant_four.rb",
     "spec/spec_helper.rb",
     "spec/open_namespace_spec.rb",
-    "spec/namespace_gem_examples.rb"
+    "spec/namespace_files_examples.rb"
   ]
 
   if s.respond_to? :specification_version then
