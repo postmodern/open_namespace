@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'extlib'
 require 'set'
 
@@ -53,69 +52,6 @@ module OpenNamespace
     #
     def namespace_root=(new_path)
       @namespace_root = new_path.to_s
-    end
-
-    #
-    # Finds the RubyGems that contain files within the {#namespace_root}.
-    #
-    # @return [Hash{String => Gem::Specification}]
-    #   The names and RubyGem specifications.
-    #
-    # @since 0.1.1
-    #
-    def namespace_gems
-      unless defined?(@namespace_gems)
-        namespace_dir = File.join('lib',self.namespace_root,'')
-
-        loaded_gems = Gem.loaded_specs.values.select do |gem|
-          gem.files.any? do |path|
-            path.index(namespace_dir) == 0
-          end
-        end
-
-        @namespace_gems = {}
-        
-        loaded_gems.each do |loaded_gem|
-          @namespace_gems[loaded_gem.name] = loaded_gem
-
-          loaded_gem.dependent_gems.each do |gems|
-            gem = gems.first
-
-            @namespace_gems[gem.name] = gem
-          end
-        end
-      end
-
-      return @namespace_gems
-    end
-
-    #
-    # Provides the list of file-names that can be loaded by the namespace.
-    #
-    # @return [Set]
-    #   The unique list of file-names under the namespace.
-    #
-    # @since 0.1.1
-    #
-    def namespace_files
-      unless defined?(@namespace_files)
-        @namespace_files = Set[]
-
-        namespace_dir = File.join('lib',self.namespace_root,'')
-        extract = Regexp.new(File.join('lib',self.namespace_root,'(.+)\.rb$'))
-
-        namespace_gems.each_value do |gem|
-          gem.files.each do |path|
-            if path.index(namespace_dir) == 0
-              if (match = path.match(extract))
-                @namespace_files << match[1]
-              end
-            end
-          end
-        end
-      end
-
-      return @namespace_files
     end
 
     #

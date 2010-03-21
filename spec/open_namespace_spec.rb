@@ -1,7 +1,6 @@
 require 'open_namespace/version'
 
 require 'spec_helper'
-require 'namespace_files_examples'
 require 'classes/simple_namespace'
 require 'classes/custom_namespace'
 
@@ -14,8 +13,6 @@ describe OpenNamespace do
     before(:all) do
       @module = Classes::SimpleNamespace
     end
-
-    it_should_behave_like 'Namespace Files'
 
     it "should have the same namespace as the module name" do
       @module.namespace.should == 'Classes::SimpleNamespace'
@@ -84,8 +81,6 @@ describe OpenNamespace do
     before(:all) do
       @module = Classes::CustomNamespace
     end
-
-    it_should_behave_like 'Namespace Files'
 
     it "should have the same namespace as the module name" do
       @module.namespace.should == 'Classes::CustomNamespace::Custom'
