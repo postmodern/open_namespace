@@ -1,5 +1,4 @@
 require 'extlib'
-require 'set'
 
 module OpenNamespace
   module ClassMethods
