@@ -7,6 +7,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = 'open-namespace'
     gem.version = OpenNamespace::VERSION
+    gem.license = 'MIT'
     gem.summary = %Q{Allows namespaces to load constants on-demand}
     gem.description = %Q{OpenNamespace allows namespaces to require and find classes and modules from other RubyGems.}
     gem.email = 'postmodern.mod3@gmail.com'
