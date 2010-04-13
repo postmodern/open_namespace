@@ -5,7 +5,7 @@ require './lib/open_namespace/version.rb'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = 'open-namespace'
+    gem.name = 'open_namespace'
     gem.version = OpenNamespace::VERSION
     gem.license = 'MIT'
     gem.summary = %Q{Allows namespaces to load constants on-demand}

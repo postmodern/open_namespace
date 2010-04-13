@@ -1,7 +1,7 @@
 # OpenNamespace
 
-* [github.com/postmodern/open-namespace](http://github.com/postmodern/open-namespace)
-* [github.com/postmodern/open-namespace/issues](http://github.com/postmodern/open-namespace/issues)
+* [github.com/postmodern/open_namespace](http://github.com/postmodern/open_namespace)
+* [github.com/postmodern/open_namespace/issues](http://github.com/postmodern/open_namespace/issues)
 * Postmodern (postmodern.mod3 at gmail.com)
 
 ## Description
@@ -61,7 +61,7 @@ Loading constants from alternate namespaces / directories:
 
 ## Install
 
-    $ sudo gem install open-namespace
+    $ sudo gem install open_namespace
 
 ## License
 
