@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{open_namespace}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/open_namespace/class_methods.rb",
      "lib/open_namespace/open_namespace.rb",
      "lib/open_namespace/version.rb",
+     "open_namespace.gemspec",
      "spec/classes/custom/bad_constant.rb",
      "spec/classes/custom/constant_one.rb",
      "spec/classes/custom/constant_two.rb",
