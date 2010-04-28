@@ -1,8 +1,6 @@
 module Classes
   module CustomNamespace
-    module Custom
-      class ConstantTwo
-      end
+    class ConstantTwo
     end
   end
 end

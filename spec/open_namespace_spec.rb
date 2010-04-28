@@ -14,10 +14,6 @@ describe OpenNamespace do
       @module = Classes::SimpleNamespace
     end
 
-    it "should have the same namespace as the module name" do
-      @module.namespace.should == 'Classes::SimpleNamespace'
-    end
-
     it "should have the same namespace root as the module's directory" do
       @module.namespace_root.should == File.join('classes','simple_namespace')
     end
@@ -82,38 +78,27 @@ describe OpenNamespace do
       @module = Classes::CustomNamespace
     end
 
-    it "should have the same namespace as the module name" do
-      @module.namespace.should == 'Classes::CustomNamespace::Custom'
-    end
-
     it "should have the same namespace root as the module's directory" do
       @module.namespace_root.should == File.join('classes','custom')
     end
 
     it "should load constants into the namespace" do
       @module.require_const :constant_one
-
-      @module.should be_const_defined('Custom')
-      @custom = @module.const_get('Custom')
-
-      @custom.should be_const_defined('ConstantOne')
+      @module.should be_const_defined('ConstantOne')
     end
 
     it "should find loaded constants in the namespace" do
       const = @module.require_const(:constant_one)
 
       const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::Custom::ConstantOne'
+      const.name.should == 'Classes::CustomNamespace::ConstantOne'
     end
 
     it "should load constants via sub-paths" do
       @module.require_const File.join('sub','constant_four')
 
-      @module.should be_const_defined('Custom')
-      @custom = @module.const_get('Custom')
-
-      @custom.should be_const_defined('Sub')
-      @sub = @custom.const_get('Sub')
+      @module.should be_const_defined('Sub')
+      @sub = @module.const_get('Sub')
 
       @sub.should be_const_defined('ConstantFour')
     end
@@ -122,7 +107,7 @@ describe OpenNamespace do
       const = @module.require_const(File.join('sub','constant_four'))
 
       const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::Custom::Sub::ConstantFour'
+      const.name.should == 'Classes::CustomNamespace::Sub::ConstantFour'
     end
 
     it "should return nil on LoadError exceptions" do
@@ -141,7 +126,7 @@ describe OpenNamespace do
       const = @module::ConstantTwo
 
       const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::Custom::ConstantTwo'
+      const.name.should == 'Classes::CustomNamespace::ConstantTwo'
     end
 
     it "should raise a NameError exception const_missing fails" do

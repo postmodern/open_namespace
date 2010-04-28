@@ -1,8 +1,6 @@
 module Classes
   module CusstomNamespace
-    module Custom
-      class ConstantThree
-      end
+    class ConstantThree
     end
   end
 end

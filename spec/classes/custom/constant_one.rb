@@ -1,8 +1,6 @@
 module Classes
   module CustomNamespace
-    module Custom
-      class ConstantOne
-      end
+    class ConstantOne
     end
   end
 end

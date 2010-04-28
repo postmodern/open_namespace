@@ -39,14 +39,13 @@ Explicit and implicit loading of constants:
     Project::Plugins::Other
     # => Project::Plugins::Other
 
-Loading constants from alternate namespaces / directories:
+Loading constants from alternate namespace root directories:
 
     module Project
       module UI
         module CommandLine
           include OpenNamespace
 
-          self.namespace = 'Project::UI::CommandLine::Commands'
           self.namespace_root = File.join('project','ui','command_line','commands')
         end
       end

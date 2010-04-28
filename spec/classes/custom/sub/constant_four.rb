@@ -1,9 +1,7 @@
 module Classes
   module CustomNamespace
-    module Custom
-      module Sub
-        class ConstantFour
-        end
+    module Sub
+      class ConstantFour
       end
     end
   end

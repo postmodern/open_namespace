@@ -3,34 +3,6 @@ require 'extlib'
 module OpenNamespace
   module ClassMethods
     #
-    # The namespace to search within.
-    #
-    # @return [String]
-    #   The namespace to search for constants within.
-    #
-    def namespace
-      @namespace ||= self.name
-    end
-
-    #
-    # Sets the namespace to search within.
-    #
-    # @param [Module, Class, String] new_namespace
-    #   The new namespace to search within.
-    #
-    # @return [String]
-    #   The namespace to search within.
-    #
-    def namespace=(new_namespace)
-      case new_namespace
-      when Module, Class
-        @namespace = new_namespace.name
-      else
-        @namespace = new_namespace.to_s
-      end
-    end
-
-    #
     # The file path that represents the namespace.
     #
     # @return [String]
@@ -125,7 +97,7 @@ module OpenNamespace
     #
     def find_const(file_name)
       file_name = file_name.to_s
-      const_name = (self.namespace + '::' + file_name.to_const_string)
+      const_name = (self.name + '::' + file_name.to_const_string)
 
       begin
         return Object.full_const_get(const_name)
