@@ -135,7 +135,28 @@ module OpenNamespace
     # @see require_const.
     #
     def const_missing(name)
-      require_const(name.to_s.to_const_path) || super(name)
+      file_name = name.to_s
+
+      # back-ported from extlib's String#to_const_path
+      unless file_name.match(/\A[A-Z]+\z/)
+        file_name.gsub!(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+        file_name.gsub!(/([a-z])([A-Z])/, '\1_\2')
+      end
+      file_name.downcase!
+
+      if require_file(file_name)
+        #
+        # If const_missing is being called, the constant is not present yet.
+        # Therefor, only check for the constant if the file was
+        # successfully loaded by require_file.
+        #
+        if self.const_defined?(name)
+          # get the exact constant name that was requested
+          return self.const_get(name)
+        end
+      end
+      
+      return super(name)
     end
   end
 end
