@@ -50,8 +50,6 @@ module OpenNamespace
       return const_search(name)
     end
 
-    protected
-
     #
     # Requires the file with the given name, within the namespace root
     # directory.
@@ -119,6 +117,8 @@ module OpenNamespace
 
       return scope
     end
+
+    protected
 
     #
     # Provides transparent access to require_const.
