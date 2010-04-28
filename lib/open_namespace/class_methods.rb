@@ -62,7 +62,7 @@ module OpenNamespace
     # @raise [Gem::LoadError]
     #   A dependency needed by the file could not be satisfied by RubyGems.
     #
-    # @since 0.2.1
+    # @since 0.3.0
     #
     def require_file(name)
       name = name.to_s
@@ -89,7 +89,7 @@ module OpenNamespace
     #   Returns the found constants, or `nil` if a `NameError` exception
     #   was encountered.
     #
-    # @since 0.2.1
+    # @since 0.3.0
     #
     def const_search(file_name)
       names = file_name.to_s.split(/[:\/]+/)

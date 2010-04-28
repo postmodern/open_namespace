@@ -14,7 +14,7 @@ module OpenNamespace
   # @return [String]
   #   The file path that the constant is likely to be defined within.
   #
-  # @since 0.2.1
+  # @since 0.3.0
   #
   def OpenNamespace.constant_path(name)
     path = name.to_s
