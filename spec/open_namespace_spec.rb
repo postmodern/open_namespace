@@ -9,7 +9,7 @@ describe OpenNamespace do
     OpenNamespace.const_defined?('VERSION').should == true
   end
 
-  describe "default namespace" do
+  context "default namespace" do
     before(:all) do
       @module = Classes::SimpleNamespace
     end
@@ -73,7 +73,7 @@ describe OpenNamespace do
     end
   end
 
-  describe "custom namespace" do
+  context "custom namespace" do
     before(:all) do
       @module = Classes::CustomNamespace
     end
