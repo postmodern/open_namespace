@@ -73,6 +73,30 @@ module OpenNamespace
     #   # => Fully::Qualified::Namespace::Network::Helper
     #
     def require_const(name)
+      require_file(name)
+
+      return find_const(name)
+    end
+
+    protected
+
+    #
+    # Requires the file with the given name, within the namespace root
+    # directory.
+    #
+    # @param [Symbol, String] name
+    #   The name of the file to require.
+    #
+    # @return [true, nil]
+    #   Returns `true` if the file was successfully loaded, returns `nil`
+    #   on a `LoadError` exception.
+    #
+    # @raise [Gem::LoadError]
+    #   A dependency needed by the file could not be satisfied by RubyGems.
+    #
+    # @since 0.2.1
+    #
+    def require_file(name)
       name = name.to_s
       path = File.join(namespace_root,File.expand_path(File.join('',name)))
 
@@ -84,7 +108,24 @@ module OpenNamespace
         return nil
       end
 
-      const_name = (self.namespace + '::' + name.to_const_string)
+      return true
+    end
+
+    #
+    # Finds the constant with a name similar to the given file name.
+    #
+    # @param [Symbol, String] file_name
+    #   The file name that represents the constant.
+    #
+    # @return [Object, nil]
+    #   Returns the found constants, or `nil` if a `NameError` exception
+    #   was encountered.
+    #
+    # @since 0.2.1
+    #
+    def find_const(file_name)
+      file_name = file_name.to_s
+      const_name = (self.namespace + '::' + file_name.to_const_string)
 
       begin
         return Object.full_const_get(const_name)
@@ -92,8 +133,6 @@ module OpenNamespace
         return nil
       end
     end
-
-    protected
 
     #
     # Provides transparent access to require_const.
