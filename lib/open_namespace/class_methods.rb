@@ -135,14 +135,7 @@ module OpenNamespace
     # @see require_const.
     #
     def const_missing(name)
-      file_name = name.to_s
-
-      # back-ported from extlib's String#to_const_path
-      unless file_name.match(/\A[A-Z]+\z/)
-        file_name.gsub!(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-        file_name.gsub!(/([a-z])([A-Z])/, '\1_\2')
-      end
-      file_name.downcase!
+      file_name = OpenNamespace.constant_path(name)
 
       if require_file(file_name)
         #
