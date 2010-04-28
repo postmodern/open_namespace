@@ -47,7 +47,7 @@ module OpenNamespace
     def require_const(name)
       require_file(name)
 
-      return find_const(name)
+      return const_search(name)
     end
 
     protected
@@ -95,15 +95,29 @@ module OpenNamespace
     #
     # @since 0.2.1
     #
-    def find_const(file_name)
-      file_name = file_name.to_s
-      const_name = (self.name + '::' + file_name.to_const_string)
+    def const_search(file_name)
+      names = file_name.to_s.split(/[:\/]+/)
+      scope = self
 
-      begin
-        return Object.full_const_get(const_name)
-      rescue NameError
-        return nil
+      until names.empty?
+        name = names.shift
+
+        # strip any dashes or underscores
+        name.tr!('_-','')
+
+        # perform a case insensitive search
+        const_pattern = /^#{name}$/i
+
+        # grep for the constant
+        const_name = scope.constants.find { |name| name =~ const_pattern }
+
+        # the constant search failed
+        return nil unless const_name
+
+        scope = scope.const_get(const_name)
       end
+
+      return scope
     end
 
     #
