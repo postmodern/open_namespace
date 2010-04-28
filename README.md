@@ -54,10 +54,6 @@ Loading constants from alternate namespace root directories:
     Project::UI::CommandLine.require_const :help
     # => Project::UI::CommandLine::Commands::Help
 
-## Requirements
-
-* [extlib](http://gemcutter.org/gems/extlib) >= 0.9.14
-
 ## Install
 
     $ sudo gem install open_namespace

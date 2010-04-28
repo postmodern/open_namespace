@@ -1,5 +1,3 @@
-require 'extlib'
-
 module OpenNamespace
   module ClassMethods
     #
