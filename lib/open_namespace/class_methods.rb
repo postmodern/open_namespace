@@ -9,7 +9,7 @@ module OpenNamespace
     #   The file path used to load constants into the namespace.
     #
     def namespace_root
-      @namespace_root ||= self.name.to_const_path
+      @namespace_root ||= OpenNamespace.constant_path(self.name)
     end
 
     #
