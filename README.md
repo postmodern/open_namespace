@@ -48,14 +48,16 @@ Loading constants from alternate namespace root directories:
     module Project
       module UI
         module CommandLine
-          include OpenNamespace
+          module Commands
+            include OpenNamespace
 
-          self.namespace_root = File.join('project','ui','command_line','commands')
+            self.namespace_root = File.join('project','ui','command_line','commands')
+          end
         end
       end
     end
 
-    Project::UI::CommandLine.require_const :help
+    Project::UI::CommandLine::Commands.require_const :help
     # => Project::UI::CommandLine::Commands::Help
 
 ## Install
