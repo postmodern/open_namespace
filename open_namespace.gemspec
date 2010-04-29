@@ -33,12 +33,14 @@ Gem::Specification.new do |s|
      "spec/classes/custom/bad_constant.rb",
      "spec/classes/custom/constant_one.rb",
      "spec/classes/custom/constant_two.rb",
+     "spec/classes/custom/odd_constant.rb",
      "spec/classes/custom/sub/constant_four.rb",
      "spec/classes/custom_namespace.rb",
      "spec/classes/simple_namespace.rb",
      "spec/classes/simple_namespace/bad_constant.rb",
      "spec/classes/simple_namespace/constant_one.rb",
      "spec/classes/simple_namespace/constant_two.rb",
+     "spec/classes/simple_namespace/odd_constant.rb",
      "spec/classes/simple_namespace/sub/constant_four.rb",
      "spec/open_namespace_spec.rb",
      "spec/spec_helper.rb"
@@ -58,11 +60,13 @@ Gem::Specification.new do |s|
      "spec/classes/custom/constant_one.rb",
      "spec/classes/custom/bad_constant.rb",
      "spec/classes/custom/sub/constant_four.rb",
+     "spec/classes/custom/odd_constant.rb",
      "spec/classes/simple_namespace.rb",
      "spec/classes/simple_namespace/constant_two.rb",
      "spec/classes/simple_namespace/constant_one.rb",
      "spec/classes/simple_namespace/bad_constant.rb",
-     "spec/classes/simple_namespace/sub/constant_four.rb"
+     "spec/classes/simple_namespace/sub/constant_four.rb",
+     "spec/classes/simple_namespace/odd_constant.rb"
   ]
 
   if s.respond_to? :specification_version then
