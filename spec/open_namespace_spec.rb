@@ -31,6 +31,13 @@ describe OpenNamespace do
       const.name.should == 'Classes::SimpleNamespace::ConstantOne'
     end
 
+    it "should find constants with odd capitalization" do
+      const = @module.require_const(:odd_constant)
+
+      const.class.should == Class
+      const.name.should == 'Classes::SimpleNamespace::ODDConstant'
+    end
+
     it "should load constants via sub-paths" do
       @module.require_const File.join('sub','constant_four')
 
@@ -92,6 +99,13 @@ describe OpenNamespace do
 
       const.class.should == Class
       const.name.should == 'Classes::CustomNamespace::ConstantOne'
+    end
+
+    it "should find constants with odd capitalization" do
+      const = @module.require_const(:odd_constant)
+
+      const.class.should == Class
+      const.name.should == 'Classes::CustomNamespace::ODDConstant'
     end
 
     it "should load constants via sub-paths" do
