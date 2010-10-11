@@ -14,7 +14,7 @@ begin
     gem.homepage = 'http://github.com/postmodern/open-namespace'
     gem.authors = ['Postmodern']
     gem.add_development_dependency 'rspec', '~> 2.0.0'
-    gem.add_development_dependency 'yard', '>= 0.5.3'
+    gem.add_development_dependency 'yard', '~> 0.6.0'
     gem.has_rdoc = 'yard'
   end
   Jeweler::GemcutterTasks.new
