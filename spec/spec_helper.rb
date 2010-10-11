@@ -1,6 +1,6 @@
 require 'rubygems'
-gem 'rspec', '>=1.2.9'
-require 'spec'
+gem 'rspec', '~> 2.0.0'
+require 'rspec'
 
 require 'open_namespace/version'
 
