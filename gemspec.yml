@@ -1,0 +1,17 @@
+name: open_namespace
+summary: Allows namespaces to load constants on-demand
+description:
+  OpenNamespace allows namespaces to require and find classes and modules
+  from other RubyGems.
+
+license: MIT
+authors: Postmodern
+email: postmodern.mod3@gmail.com
+homepage: http://github.com/postmodern/open_namespace
+has_yard: true
+
+development_dependencies:
+  ore: ~> 0.2.0
+  ore-tasks: ~> 0.1.2
+  rspec: ~> 2.0.0
+  yard: ~> 0.6.0

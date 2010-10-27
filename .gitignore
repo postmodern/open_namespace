@@ -1,6 +1,5 @@
 pkg
 doc
-tmp
 .DS_Store
 .yardoc
 *.swp
