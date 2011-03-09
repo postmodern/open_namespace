@@ -1,3 +1,7 @@
+### 0.3.1 / 2011-03-08
+
+* Fixed a typo in {OpenNamespace::ClassMethods#require_file}.
+
 ### 0.3.0 / 2010-04-28
 
 * Added {OpenNamespace.constant_path}.
