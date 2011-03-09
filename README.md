@@ -1,8 +1,9 @@
 # OpenNamespace
 
-* [github.com/postmodern/open_namespace](http://github.com/postmodern/open_namespace)
-* [github.com/postmodern/open_namespace/issues](http://github.com/postmodern/open_namespace/issues)
-* Postmodern (postmodern.mod3 at gmail.com)
+* [Source](http://github.com/postmodern/open_namespace)
+* [Issues](http://github.com/postmodern/open_namespace/issues)
+* [Documentation](http://rubydoc.info/gems/open_namespace/frames)
+* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
@@ -66,5 +67,6 @@ Loading constants from alternate namespace root directories:
 
 ## License
 
-See {file:LICENSE.txt} for license information.
+Copyright (c) 2010-2011 Hal Brodigan
 
+See {file:LICENSE.txt} for license information.
