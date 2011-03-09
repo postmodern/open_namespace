@@ -70,7 +70,7 @@ module OpenNamespace
 
       begin
         require path
-      rescue Gem::LoadError
+      rescue Gem::LoadError => e
         raise(e)
       rescue ::LoadError
         return nil
