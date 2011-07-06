@@ -17,7 +17,7 @@ module OpenNamespace
   # @since 0.3.0
   #
   def OpenNamespace.constant_path(name)
-    path = name.to_s
+    path = name.to_s.dup
 
     # back-ported from extlib's String#to_const_path
     path.gsub!(/::/,'/')
@@ -27,8 +27,8 @@ module OpenNamespace
       path.gsub!(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
       path.gsub!(/([a-z])([A-Z])/, '\1_\2')
     end
-    path.downcase!
 
+    path.downcase!
     return path
   end
 end
