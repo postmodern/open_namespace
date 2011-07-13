@@ -1,3 +1,8 @@
+### 0.3.2 / 2011-07-12
+
+* Fixed a bug in {OpenNamespace.constant_path} where the argument was
+  being modified in-place.
+
 ### 0.3.1 / 2011-03-08
 
 * Fixed a typo in {OpenNamespace::ClassMethods#require_file}.
