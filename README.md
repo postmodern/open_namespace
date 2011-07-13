@@ -63,7 +63,7 @@ Loading constants from alternate namespace root directories:
 
 ## Install
 
-    $ sudo gem install open_namespace
+    $ gem install open_namespace
 
 ## License
 
