@@ -18,7 +18,7 @@ module OpenNamespace
   #
   # @api private
   #
-  def OpenNamespace.constant_path(name)
+  def OpenNamespace.const_path(name)
     path = name.to_s.dup
 
     # back-ported from extlib's String#to_const_path
