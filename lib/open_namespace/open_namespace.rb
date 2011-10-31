@@ -16,6 +16,8 @@ module OpenNamespace
   #
   # @since 0.3.0
   #
+  # @api private
+  #
   def OpenNamespace.constant_path(name)
     path = name.to_s.dup
 
