@@ -16,7 +16,7 @@ module OpenNamespace
   #
   # @since 0.3.0
   #
-  # @api private
+  # @api semipublic
   #
   def self.const_path(name)
     path = name.to_s.dup
@@ -48,6 +48,8 @@ module OpenNamespace
   #
   # @since 0.4.0
   #
+  # @api semipublic
+  #
   def self.const_lookup(scope,name)
     names = name.split('::')
 
@@ -76,6 +78,8 @@ module OpenNamespace
   #   was encountered.
   #
   # @since 0.4.0
+  #
+  # @api semipublic
   #
   def self.const_search(scope,file_name)
     names = file_name.to_s.split(/[:\/]+/)
