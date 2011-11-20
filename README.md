@@ -13,6 +13,7 @@ load plugin modules/classes from other gems.
 
 ## Features
 
+* Provides implicit loading of constants via `const_defined?`.
 * Provides implicit loading of constants via `const_missing`.
 * Provides explicit loading of constants via `require_const`.
 
