@@ -80,6 +80,32 @@ module OpenNamespace
     end
 
     #
+    # Finds the exact constant.
+    #
+    # @param [String] name
+    #   The name of the constant.
+    #
+    # @return [Object, nil]
+    #   The exact constant or `nil` if the constant could not be found.
+    #
+    # @since 0.4.0
+    #
+    def const_lookup(name)
+      names = name.split('::')
+      scope = self
+
+      until names.empty?
+        begin
+          scope = scope.const_get(names.shift)
+        rescue NameError
+          return nil
+        end
+      end
+
+      return scope
+    end
+
+    #
     # Finds the constant with a name similar to the given file name.
     #
     # @param [Symbol, String] file_name
