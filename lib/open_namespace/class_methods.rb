@@ -112,18 +112,7 @@ module OpenNamespace
     # @since 0.4.0
     #
     def const_lookup(name)
-      names = name.split('::')
-      scope = self
-
-      until names.empty?
-        begin
-          scope = scope.const_get(names.shift)
-        rescue NameError
-          return nil
-        end
-      end
-
-      return scope
+      OpenNamespace.const_lookup(self,name)
     end
 
     #
@@ -139,28 +128,7 @@ module OpenNamespace
     # @since 0.3.0
     #
     def const_search(file_name)
-      names = file_name.to_s.split(/[:\/]+/)
-      scope = self
-
-      until names.empty?
-        name = names.shift
-
-        # strip any dashes or underscores
-        name.tr!('_-','')
-
-        # perform a case insensitive search
-        const_pattern = /^#{name}$/i
-
-        # grep for the constant
-        const_name = scope.constants.find { |name| name =~ const_pattern }
-
-        # the constant search failed
-        return nil unless const_name
-
-        scope = scope.const_get(const_name)
-      end
-
-      return scope
+      OpenNamespace.const_search(self,file_name)
     end
 
     protected
