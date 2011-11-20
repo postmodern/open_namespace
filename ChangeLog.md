@@ -1,3 +1,10 @@
+### 0.4.0 / 2011-11-19
+
+* Added {OpenNamespace.const_lookup}.
+* Added {OpenNamespace.const_search}.
+* Added {OpenNamespace::ClassMethods#const_lookup}.
+* Added {OpenNamespace::ClassMethods#const_defined?}.
+
 ### 0.3.2 / 2011-07-12
 
 * Fixed a bug in {OpenNamespace.const_path} where the argument was
