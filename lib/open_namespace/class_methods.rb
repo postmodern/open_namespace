@@ -85,18 +85,21 @@ module OpenNamespace
     # @param [String] name
     #   The name of the constant.
     #
+    # @param [Boolean] inherit
+    #   Specifies whether to search the ancestors for the constant.
+    #
     # @return [Boolean]
     #   Specifies whether the constant is defined.
     #
-    def const_defined?(name)
-      if super(name)
+    def const_defined?(name,inherit=true)
+      if super(name,inherit)
         true
       else
         # attempt to load the file that might have the constant
         require_file(OpenNamespace.const_path(name))
 
         # check for the constant again
-        return super(name)
+        return super(name,inherit)
       end
     end
 
