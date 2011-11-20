@@ -80,6 +80,27 @@ module OpenNamespace
     end
 
     #
+    # Checks if a constant is defined or attempts loading the constant.
+    #
+    # @param [String] name
+    #   The name of the constant.
+    #
+    # @return [Boolean]
+    #   Specifies whether the constant is defined.
+    #
+    def const_defined?(name)
+      if super(name)
+        true
+      else
+        # attempt to load the file that might have the constant
+        require_file(OpenNamespace.const_path(name))
+
+        # check for the constant again
+        return super(name)
+      end
+    end
+
+    #
     # Finds the exact constant.
     #
     # @param [String] name
@@ -159,18 +180,9 @@ module OpenNamespace
     # @see require_const.
     #
     def const_missing(name)
-      file_name = OpenNamespace.const_path(name)
-
-      if require_file(file_name)
-        #
-        # If const_missing is being called, the constant is not present yet.
-        # Therefor, only check for the constant if the file was
-        # successfully loaded by require_file.
-        #
-        if self.const_defined?(name)
-          # get the exact constant name that was requested
-          return self.const_get(name)
-        end
+      if self.const_defined?(name)
+        # get the exact constant name that was requested
+        return self.const_get(name)
       end
       
       return super(name)

@@ -66,6 +66,10 @@ describe OpenNamespace do
       const.should be_nil
     end
 
+    it "should attempt loading the constant when calling const_defined?" do
+      @module.const_defined?('ConstantThree').should == true
+    end
+
     it "should load constants transparently via const_missing" do
       const = @module::ConstantTwo
 
@@ -134,6 +138,10 @@ describe OpenNamespace do
       const = @module.require_const(:bad_constant)
 
       const.should be_nil
+    end
+
+    it "should attempt loading the constant when calling const_defined?" do
+      @module.const_defined?('ConstantThree').should == true
     end
 
     it "should load constants transparently via const_missing" do
