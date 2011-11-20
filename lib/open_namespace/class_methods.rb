@@ -91,15 +91,15 @@ module OpenNamespace
     # @return [Boolean]
     #   Specifies whether the constant is defined.
     #
-    def const_defined?(name,inherit=true)
-      if super(name,inherit)
+    def const_defined?(name,*inherit)
+      if super(name,*inherit)
         true
       else
         # attempt to load the file that might have the constant
         require_file(OpenNamespace.const_path(name))
 
         # check for the constant again
-        return super(name,inherit)
+        return super(name,*inherit)
       end
     end
 
