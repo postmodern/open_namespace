@@ -1,7 +1,7 @@
 # OpenNamespace
 
-* [Source](http://github.com/postmodern/open_namespace)
-* [Issues](http://github.com/postmodern/open_namespace/issues)
+* [Source](https://github.com/postmodern/open_namespace)
+* [Issues](https://github.com/postmodern/open_namespace/issues)
 * [Documentation](http://rubydoc.info/gems/open_namespace/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
