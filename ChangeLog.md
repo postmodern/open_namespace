@@ -1,3 +1,8 @@
+### 0.4.1 / 2012-05-27
+
+* Replaced ore-tasks with
+  [rubygems-tasks](https://github.com/postmodern/rubygems-tasks#readme).
+
 ### 0.4.0 / 2011-11-19
 
 * Added {OpenNamespace.const_lookup}.
