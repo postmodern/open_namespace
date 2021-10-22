@@ -5,6 +5,8 @@
 * [Documentation](http://rubydoc.info/gems/open_namespace/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
+**DEPRECATED:** Use [zeitwerk](https://github.com/fxn/zeitwerk#readme) instead.
+
 ## Description
 
 OpenNamespace allows namespaces to require and find classes and modules from
