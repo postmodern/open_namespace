@@ -1,160 +1,161 @@
-require 'open_namespace/version'
-
 require 'spec_helper'
+require 'open_namespace'
+
 require 'classes/simple_namespace'
 require 'classes/custom_namespace'
 
 describe OpenNamespace do
   it "should have a VERSION constant" do
-    OpenNamespace.const_defined?('VERSION').should == true
+    expect(OpenNamespace.const_defined?('VERSION')).to be(true)
   end
 
   context "default namespace" do
-    before(:all) do
-      @module = Classes::SimpleNamespace
-    end
+    subject { Classes::SimpleNamespace }
 
     it "should have the same namespace root as the module's directory" do
-      @module.namespace_root.should == File.join('classes','simple_namespace')
+      expect(subject.namespace_root).to eq(
+        File.join('classes','simple_namespace')
+      )
     end
 
     it "should load constants into the namespace" do
-      @module.require_const :constant_one
+      subject.require_const :constant_one
 
-      @module.should be_const_defined('ConstantOne')
+      expect(subject).to be_const_defined('ConstantOne')
     end
 
     it "should find loaded constants in the namespace" do
-      const = @module.require_const(:constant_one)
+      const = subject.require_const(:constant_one)
 
-      const.class.should == Class
-      const.name.should == 'Classes::SimpleNamespace::ConstantOne'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::SimpleNamespace::ConstantOne')
     end
 
     it "should find constants with odd capitalization" do
-      const = @module.require_const(:odd_constant)
+      const = subject.require_const(:odd_constant)
 
-      const.class.should == Class
-      const.name.should == 'Classes::SimpleNamespace::ODDConstant'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::SimpleNamespace::ODDConstant')
     end
 
     it "should load constants via sub-paths" do
-      @module.require_const File.join('sub','constant_four')
+      subject.require_const(File.join('sub','constant_four'))
 
-      @module.should be_const_defined('Sub')
-      @sub = @module.const_get('Sub')
+      expect(subject).to be_const_defined('Sub')
 
-      @sub.should be_const_defined('ConstantFour')
+      sub = subject.const_get('Sub')
+
+      expect(sub).to be_const_defined('ConstantFour')
     end
 
     it "should find constants loaded via sub-paths" do
-      const = @module.require_const(File.join('sub','constant_four'))
+      const = subject.require_const(File.join('sub','constant_four'))
 
-      const.class.should == Class
-      const.name.should == 'Classes::SimpleNamespace::Sub::ConstantFour'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::SimpleNamespace::Sub::ConstantFour')
     end
 
     it "should return nil on LoadError exceptions" do
-      const = @module.require_const(:constant_not_found)
+      const = subject.require_const(:constant_not_found)
 
-      const.should be_nil
+      expect(const).to be(nil)
     end
 
     it "should return nil on NameError exceptions" do
-      const = @module.require_const(:bad_constant)
+      const = subject.require_const(:bad_constant)
 
-      const.should be_nil
+      expect(const).to be(nil)
     end
 
     it "should attempt loading the constant when calling const_defined?" do
-      @module.const_defined?('ConstantThree').should == true
+      expect(subject.const_defined?('ConstantThree')).to be(true)
     end
 
     it "should load constants transparently via const_missing" do
-      const = @module::ConstantTwo
+      const = subject::ConstantTwo
 
-      const.class.should == Class
-      const.name.should == 'Classes::SimpleNamespace::ConstantTwo'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::SimpleNamespace::ConstantTwo')
     end
 
     it "should raise a NameError exception const_missing fails" do
-      lambda {
-        @module::BadConstant
-      }.should raise_error(NameError)
+      expect {
+        subject::BadConstant
+      }.to raise_error(NameError)
     end
   end
 
   context "custom namespace" do
-    before(:all) do
-      @module = Classes::CustomNamespace
-    end
+    subject { Classes::CustomNamespace }
 
     it "should have the same namespace root as the module's directory" do
-      @module.namespace_root.should == File.join('classes','custom')
+      expect(subject.namespace_root).to eq(File.join('classes','custom'))
     end
 
     it "should load constants into the namespace" do
-      @module.require_const :constant_one
-      @module.should be_const_defined('ConstantOne')
+      subject.require_const(:constant_one)
+
+      expect(subject).to be_const_defined('ConstantOne')
     end
 
     it "should find loaded constants in the namespace" do
-      const = @module.require_const(:constant_one)
+      const = subject.require_const(:constant_one)
 
-      const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::ConstantOne'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::CustomNamespace::ConstantOne')
     end
 
     it "should find constants with odd capitalization" do
-      const = @module.require_const(:odd_constant)
+      const = subject.require_const(:odd_constant)
 
-      const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::ODDConstant'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::CustomNamespace::ODDConstant')
     end
 
     it "should load constants via sub-paths" do
-      @module.require_const File.join('sub','constant_four')
+      subject.require_const File.join('sub','constant_four')
 
-      @module.should be_const_defined('Sub')
-      @sub = @module.const_get('Sub')
+      expect(subject).to be_const_defined('Sub')
 
-      @sub.should be_const_defined('ConstantFour')
+      sub = subject.const_get('Sub')
+
+      expect(sub).to be_const_defined('ConstantFour')
     end
 
     it "should find constants loaded via sub-paths" do
-      const = @module.require_const(File.join('sub','constant_four'))
+      const = subject.require_const(File.join('sub','constant_four'))
 
-      const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::Sub::ConstantFour'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::CustomNamespace::Sub::ConstantFour')
     end
 
     it "should return nil on LoadError exceptions" do
-      const = @module.require_const(:constant_not_found)
+      const = subject.require_const(:constant_not_found)
 
-      const.should be_nil
+      expect(const).to be_nil
     end
 
     it "should return nil on NameError exceptions" do
-      const = @module.require_const(:bad_constant)
+      const = subject.require_const(:bad_constant)
 
-      const.should be_nil
+      expect(const).to be_nil
     end
 
     it "should attempt loading the constant when calling const_defined?" do
-      @module.const_defined?('ConstantThree').should == true
+      expect(subject.const_defined?('ConstantThree')).to be(true)
     end
 
     it "should load constants transparently via const_missing" do
-      const = @module::ConstantTwo
+      const = subject::ConstantTwo
 
-      const.class.should == Class
-      const.name.should == 'Classes::CustomNamespace::ConstantTwo'
+      expect(const.class).to be(Class)
+      expect(const.name).to eq('Classes::CustomNamespace::ConstantTwo')
     end
 
     it "should raise a NameError exception const_missing fails" do
-      lambda {
-        @module::BadConstant
-      }.should raise_error(NameError)
+      expect {
+        subject::BadConstant
+      }.to raise_error(NameError)
     end
   end
 end
