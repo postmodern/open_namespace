@@ -15,6 +15,8 @@ load plugin modules/classes from other gems.
 * Provides implicit loading of constants via `const_defined?`.
 * Provides implicit loading of constants via `const_missing`.
 * Provides explicit loading of constants via `require_const`.
+* Can auto-load other sub-gems (ex: `foo-bar`) from the main gem's namespace
+  (ex: `Foo`).
 
 ## Examples
 
