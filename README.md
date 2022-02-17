@@ -20,7 +20,7 @@ load plugin modules/classes from other gems.
 
 ## Examples
 
-Explicit and implicit loading of constants:
+Include it into a namespace:
 
 ```ruby
 require 'open_namespace'
@@ -30,20 +30,32 @@ module Project
     include OpenNamespace
   end
 end
+```
 
-# explicitly load constants
+Explicitly load constants via their file name:
+
+```ruby
 Project::Plugins.require_const :foo_bar
 # => Project::Plugins::FooBar
+```
 
-# explicitly load constants with odd capitalization
+Explicitly load constants containing uppercase acronyms:
+
+```ruby
 Project::Plugins.require_const :tcp_session
 # => Project::Plugins::TCPSession
+```
 
-# explicitly load constants via sub-paths
+Explicitly load constants from nested directories:
+
+```ruby
 Project::Plugins.require_const 'templates/erb'
 # => Project::Plugins::Templates::Erb
+```
 
-# implicitly load constants via const_missing
+Implicitly load constants via `const_missing`:
+
+```ruby
 Project::Plugins::Other
 # => Project::Plugins::Other
 ```
@@ -57,7 +69,7 @@ module Project
       module Commands
         include OpenNamespace
 
-        self.namespace_root = File.join('project','ui','command_line','commands')
+        self.namespace_root = File.join(__dir__,'commands')
       end
     end
   end
