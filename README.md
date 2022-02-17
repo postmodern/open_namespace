@@ -32,7 +32,7 @@ module Project
 end
 
 # explicitly load constants
-Project::Plguins.require_const :foo_bar
+Project::Plugins.require_const :foo_bar
 # => Project::Plugins::FooBar
 
 # explicitly load constants with odd capitalization
@@ -40,7 +40,7 @@ Project::Plugins.require_const :tcp_session
 # => Project::Plugins::TCPSession
 
 # explicitly load constants via sub-paths
-Project::Plguins.require_const 'templates/erb'
+Project::Plugins.require_const 'templates/erb'
 # => Project::Plugins::Templates::Erb
 
 # implicitly load constants via const_missing
