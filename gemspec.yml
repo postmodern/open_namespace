@@ -10,5 +10,12 @@ email: postmodern.mod3@gmail.com
 homepage: https://github.com/postmodern/open_namespace#readme
 has_yard: true
 
+metadata:
+  documentation_uri: https://rubydoc.info/gems/open_namespace
+  source_code_uri:   https://github.com/postmodern/open_namespace
+  bug_tracker_uri:   https://github.com/postmodern/open_namespace/issues
+  changelog_uri:     https://github.com/postmodern/open_namespace/blob/main/ChangeLog.md
+  rubygems_mfa_required: 'true'
+
 development_dependencies:
   bundler: ~> 2.0
