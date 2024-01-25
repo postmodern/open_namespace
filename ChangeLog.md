@@ -1,3 +1,8 @@
+### 0.4.2 / 2024-01-24
+
+* Switched to using `require_relative` to improve load-times.
+* Added `# frozen_string_literal: true` to all files.
+
 ### 0.4.1 / 2012-05-27
 
 * Replaced ore-tasks with
