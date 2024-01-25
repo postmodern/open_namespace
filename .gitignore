@@ -1,6 +1,7 @@
 /Gemfile.lock
-/pkg
+/coverage
 /doc
+/pkg
 .DS_Store
 .yardoc
 *.swp
