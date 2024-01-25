@@ -1,4 +1,4 @@
-require 'open_namespace/class_methods'
+require_relative 'class_methods'
 
 module OpenNamespace
   def self.included(base)

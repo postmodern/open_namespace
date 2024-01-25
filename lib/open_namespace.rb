@@ -1,2 +1,2 @@
-require 'open_namespace/open_namespace'
-require 'open_namespace/version'
+require_relative 'open_namespace/open_namespace'
+require_relative 'open_namespace/version'
